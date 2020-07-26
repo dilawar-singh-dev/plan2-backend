@@ -14,7 +14,7 @@ class AuthController {
       var password = request.input('password');
 
       var user = await User.findByOrFail({
-        'email': email
+        'email': email 
       });
 
       var userPassword = user.password;
