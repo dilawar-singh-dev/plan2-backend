@@ -11,7 +11,22 @@ class TaskController {
 
     try {
 
+      let {
+        date
+      } = request.all();
+
+      // DATE PARSE 
+      if (date) {
+        var indiaTime = date.toLocaleString("en-US", {
+          timeZone: "Asia/Kolkata"
+        });
+      }
+
       var task = await Task.query().where('user_id', auth.user.id).with('category').orderBy('id', 'desc').fetch();
+
+      if (date) {
+        var task = await Task.query().where({'user_id':auth.user.id,'date': indiaTime}).with('category').orderBy('id', 'desc').fetch();
+      }
 
       var data = {
         'statusCode': 200,
@@ -38,9 +53,8 @@ class TaskController {
   }) {
     try {
 
-      let {
-        date
-      } = request.all();
+      // GET DATE 
+      var date = request.input('date');
 
       if (date) {
         const task = await Task.query().where({
