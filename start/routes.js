@@ -24,14 +24,6 @@ Route.post('/register', 'AuthController.register');
 // USER 
 Route.get('/user', 'UserController.profile').middleware('auth');
 
-// SEARCH 
-Route.get('/users/search', 'UserController.usersSearch').middleware('auth');
-
-
-// GOOGLE 
-Route.get('/auth/:provider', 'AuthController.redirectToProvider').as('social.login')
-Route.get('/authenticated/:provider', 'AuthController.handleProviderCallback').as('social.login.callback')
-
 // CATEGORY
 Route.get('/category/show', 'CategoryController.show').middleware('auth');
 Route.post('/category/store', 'CategoryController.store').middleware('auth');
