@@ -27,6 +27,33 @@ class UserController {
         }
       }
 
+      async usersSearch({
+          request,
+          auth,
+          response
+        }) {
+          try {
+    
+            var user = await User.query().orderBy('name', 'desc').fetch();
+          
+            var data = {
+              'statusCode': 200,
+              'message': 'success'
+            };
+            var object = Object.assign(data, user);
+
+            return response.json(object)
+      
+          } catch (e) {
+            return response.json({
+              statusCode: 409,
+              statusMessage: 'error',
+              message: 'User not valid!',
+              excepton: e
+            })
+          }
+        }
+
 }
 
 module.exports = UserController
