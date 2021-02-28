@@ -6,11 +6,11 @@
   "main": "index.js",
   "scripts": {
     "test": "node ace test",
-    "start": "ENV_SILENT=true node build/server.js"
+    "start": "ENV_SILENT=true node build/server.js" 
   },
   "keywords": [
-    "adonisjs",
-    "adonis-app"
+    "adonis-app",
+    "adonisjs"
   ],
   "author": "",
   "license": "UNLICENSED",
