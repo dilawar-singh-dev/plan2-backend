@@ -68,6 +68,7 @@ module.exports = {
   | npm i --save pg
   |
   */
+<<<<<<< HEAD
  pg: {
   client: 'pg',
   connection: {
@@ -76,6 +77,17 @@ module.exports = {
     user: Env.get('DB_USER', 'root'),
     password: Env.get('DB_PASSWORD', ''),
     database: Env.get('DB_DATABASE', 'adonis')
+=======
+  pg: {
+    client: 'pg',
+    connection: {
+      host: 'localhost',
+      port: '5432',
+      user: 'postgres',
+      password: 'admin746#',
+      database: 'plan2'
+    }
+>>>>>>> parent of c955dcc... Update database.js
   }
 }
 }

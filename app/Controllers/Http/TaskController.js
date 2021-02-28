@@ -4,7 +4,7 @@ const Task = use('App/Models/Task');
 class TaskController {
 
   async show({
-    request, 
+    request,
     auth,
     response
   }) {

@@ -18,11 +18,25 @@ const Route = use('Route');
 
 Route.on('/').render('welcome');
 
+Route.on('chat/').render('chat');
+
 Route.post('/login', 'AuthController.login');
 Route.post('/register', 'AuthController.register');
 
 // USER 
 Route.get('/user', 'UserController.profile').middleware('auth');
+
+// SEARCH 
+Route.get('/users/search/:keyword', 'UserController.usersSearch').middleware('auth');
+
+// ADD FRIEND 
+Route.get('/friend/:id/add/', 'UserController.addFriend').middleware('auth');
+Route.get('/friends', 'UserController.friendsList').middleware('auth');
+Route.get('/friend/:id/remove/', 'UserController.removeFriend').middleware('auth');
+
+// GOOGLE 
+Route.get('/auth/:provider', 'AuthController.redirectToProvider').as('social.login')
+Route.get('/authenticated/:provider', 'AuthController.handleProviderCallback').as('social.login.callback')
 
 // CATEGORY
 Route.get('/category/show', 'CategoryController.show').middleware('auth');
@@ -41,3 +55,10 @@ Route.put('/posts/:id', 'PostController.update').middleware('auth');
 Route.delete('posts/id', 'PostController.delete').middleware('auth');
 Route.post('/posts', 'PostController.store').middleware('auth');
 Route.get('/posts', 'PostController.getPosts');
+
+// MESSAGES 
+Route.get('/chat/users', 'MessagesController.users').middleware('auth');
+Route.post('/chat/message/store', 'MessagesController.store').middleware('auth');
+Route.get('/chat/messages/:user_id', 'MessagesController.getMessages').middleware('auth');
+
+
